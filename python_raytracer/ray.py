@@ -10,3 +10,6 @@ class Ray():
 
     def at(self, distance):
         return self.origin + self.direction.normalize() * distance
+
+    def reflect(self, normal):
+        return self.direction.normalize() - 2 * (self.direction.normalize() * normal) * normal
