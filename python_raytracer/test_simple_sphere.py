@@ -4,6 +4,8 @@ from vector import Vec3
 from time import time
 from timeit import default_timer as timer
 
+
+
 RED = Vec3(255, 0, 0)
 GREEN = Vec3(0, 255, 0)
 BLUE = Vec3(0, 0, 255)
@@ -30,4 +32,3 @@ if __name__ == "__main__":
     ray = Ray(ray_origin, ray_direction)
     SphereScene = Scene(width, height, objects)
     SphereScene.render_scene(ray)
-    #SphereScene.render_scene_parallel(ray)

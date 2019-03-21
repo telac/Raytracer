@@ -4,13 +4,15 @@ import math
 from vector import Vec3
 from ray import Ray
 from helpers import form_image
-# from multiprocessing import Pool, Process, Manager, Lock
 
 RED = Vec3(255, 0, 0)
 GREEN = Vec3(0, 255, 0)
 BLUE = Vec3(0, 0, 255)
 BLACK = Vec3(0,0,0)
 WHITE = Vec3(255, 255, 255)
+MAX_DEPTH = 2
+BIAS = 0.01
+
 
 class Scene():
 
@@ -18,7 +20,6 @@ class Scene():
         self.width = width
         self.height = height
         self.objects = objects
-        self.manager = Manager()
         self.data = [(0, 0, 0) for x in range(self.width*self.height)]
 
     def render_scene(self, ray):
@@ -41,9 +42,9 @@ class Scene():
                 N = obj.get_normal(point)
                 ratio = max(0, N*V)
                 color = ratio * obj.color
-                moved_point = point + N * 0.001
+                moved_point = point + N * BIAS
                 reflection = Ray(moved_point, ray.reflect(N))
-                if depth < 3:
+                if depth < MAX_DEPTH:
                     color += 0.7 * self.trace_ray(reflection, depth + 1)
                 return color
         return BLACK
