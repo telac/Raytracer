@@ -29,7 +29,7 @@ class Vec3():
         return self.__class__(v_x, v_y, v_z)
 
     def distance(self, vec):
-        return sqrt(self.x ** vec.x + self.y ** vec.y + self.z ** vec.z)
+        return sqrt((self.x - vec.x) ** 2 + (self.y - vec.y) ** 2 + (self.z - vec.z) ** 2)
 
     def normalize(self):
         return self.__class__(
