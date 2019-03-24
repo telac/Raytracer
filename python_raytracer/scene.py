@@ -11,7 +11,7 @@ BLUE = Vec3(0, 0, 255)
 BLACK = Vec3(0,0,0)
 WHITE = Vec3(255, 255, 255)
 MAX_DEPTH = 2
-BIAS = 0.0001
+BIAS = 0.000001
 
 
 class Scene():
